@@ -1,4 +1,4 @@
-import randomq
+import random
 
 
 # An array of statements 
