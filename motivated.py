@@ -1,52 +1,51 @@
 import random
 
-
 # An array of statements 
-attr = ['Be simple and intelligent like','Focus, work and plan like', 'Be Smart like', 'Think like', 'Be disciplined like', 'Be open source like', 'Stay focused like', 
-'Use the Word like', 'Be wealthy like', 'Read books like', 'Look smart like', 'Grow like', 'Be like', 
-'Practice the presence of God like', 'Perform miracles like', 'Be Hardworking like', 'Be detailed and intelligent like']
+attr = ['Be simple and intelligent like', 'Be disciplined and hardworking like', 'Be open source like', 'Stay focused like', 'Become wealthy like', 'Read books like', 'Perform miracles like', 'Be tactical like']
 
-# an array of personal Mentors 
-engrs = ['Jesus Christ of Nazareth', 'Oghenekparobo Joel Onosemuode', 'Linus Torvalds', 'Elon Musk', 'Mark Zuckerberg', 'Sandeep Jain', 'Vue Founder']
-inspiration = ['Pastor Murphy Akpovi', 'Bill Gates', 'Carlos Ejakpevweoghene', 'Benny Hinn', 'Cristiano Ronaldo', 'Pep Guardiola', 'Zinedine Zidane']
-who = [engrs, inspiration]
+# an array of my personal inspiration
+engrs = ['Oghenekparobo Joel Onosemuode', 'Linus Torvalds', 'Elon Musk', 'Mark Zuckerberg', 'Sandeep Jain', 'Bill Gates']
 
-# call this function to get a randomly generated statement 
-def motivation():
-    i = random.randint(0,14)
-    j = random.randint(0, 6)
-    k = random.randint(0,1)
-    return f'{attr[i]} {who[k][j]}'
-  
-# call this function to get a particularly generated statement
-def getAttribute(att):
+
+
+# call this function to get a particular statement
+def getAttribute(attribute): # enter desired attribute and see who fits in
     while True:
-        i = random.randint(0,14)
-        j = random.randint(0, 6)
-        k = random.randint(0,1)
-        attribute = attr[i]
-        if attr[i] == att:
-            print(f'{attr[i]} {who[k][j]}')
+        i = random.randint(0, len(attr)-1)
+        j = random.randint(0, len(engrs)-1)
+        if attr[i] == attribute:
+            print(f'{attr[i]} {engrs[j]}')
             break
-   
-# call this function to get a particularly generated Mentor            
-def getIndividual(ind):
+
+# call this function to get a particular engineer          
+def getIndividual(individual): # enter desired engineer and see what attributes fits in
     while True:
-        i = random.randint(0,14)
-        j = random.randint(0, 6)
-        k = random.randint(0,1)
-        individual = who[k][j]
-        if who[k][j] == ind:
-            print(f'{attr[i]} {who[k][j]}')
+        i = random.randint(0, len(attr)-1)
+        j = random.randint(0, len(engrs)-1)
+        if who[k][j] == individual:
+            print(f'{attr[i]} {engrs[j]}')
             break
             
-# makes the statement more random            
-def mot():
-    while True:            
-        for i in range(38):
-            motivation()
-        print(motivation())    
-        break        
-        
-# the call        
-mot()        
+
+
+# call this function to get a randomly generated sentence
+def motivate(): # print(motivate()) to call this function 
+    i = random.randint(0, len(attr)-1)
+    j = random.randint(0, len(engrs)-1)
+    return f'{attr[i]} {engrs[j]}'
+    
+# this function takes the output of motivate() and gives a more appealing individual
+def neuralmot(input_sentence): # neuralmot means neural-link motivation
+    import re, random
+    focus = re.compile(r'focus|work', re.I)
+    
+    adverbs = ['You\'ll be fine', 'Yeah', 'Surely', 'Indeed', '', 'Definitely', 'True']
+    adv_intro = ['you should', 'do', '', 'it would be a good thing to']
+    
+    if focus.search(input_sentence) != None:
+        neuralmotengrs = ['Joel Oghenekparobo', 'Elon Musk', 'Mark Zuckerberg', 'Murphy Akpovi', 'Cristiano Ronaldo', 'Pep Guardiola']
+        return f'{adverbs[random.randint(0, len(adverbs)-1)]}, {adv_intro[random.randint(0,len(adv_intro)-1)]} stay focused like {neuralmotengrs[random.randint(0, len(neuralmotengrs)-1)]}'
+    else:
+        return f'{sentence}'
+sentence = motivate() # I stored the motivate() in this sentence variable for illegibility 
+print(neuralmot(sentence)) # I use print(neuralmot(sentence)) because I return the values in the motivate() function
